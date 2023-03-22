@@ -411,3 +411,27 @@
             function render() {
                 renderer.render(scene, camera);
             }
+
+            // Запускаємо цикл анімації
+            function animate(time) {
+                // Прив'язуємо цикл анімації до рендеру браузера
+                requestAnimationFrame(animate);
+                deltaTime = clock.getDelta();
+                totalTime += deltaTime;
+                update();
+                checkController();
+                render();
+            }
+        }
+
+        // Прибираємо блок після натискання на екран для дозволу аудіо програвання на iOS
+        access.addEventListener('click', () => {
+            initiateExperience();
+            document.body.removeChild(access);
+            loader.style.display = 'block';
+        });
+    </script>
+
+</body>
+
+</html>
